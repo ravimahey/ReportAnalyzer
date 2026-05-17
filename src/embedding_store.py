@@ -43,9 +43,10 @@ class EmbeddingStoreManager:
 
     def _ensure_store_dir(self):
         """Create store directory if it doesn't exist."""
-        os.makedirs(self.store_dir, exist_ok=True)
-        os.makedirs(os.path.join(self.store_dir, "indexes"), exist_ok=True)
-        os.makedirs(os.path.join(self.store_dir, "chunks"), exist_ok=True)
+        for subdir in ["", "indexes", "chunks"]:
+            path = os.path.join(self.store_dir, subdir)
+            if not os.path.exists(path):
+                os.makedirs(path, exist_ok=True)
 
     def _get_file_hash(self, file_path: str) -> str:
         """Generate a hash for a file to track if it has been modified."""
