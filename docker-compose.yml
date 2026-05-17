@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  financial-analysis-app:
+    build: .
+    container_name: financial-report-analysis
+    ports:
+      - "8501:8501"
+    volumes:
+      # Persist uploaded documents
+      - ./uploaded_docs:/app/uploaded_docs
+      # Persist vector store (FAISS indexes + metadata)
+      - ./vector_store:/app/vector_store
+    env_file:
+      - .env
+    environment:
+      - STREAMLIT_SERVER_MAX_UPLOAD_SIZE=200
+      - STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
+    restart: unless-stopped
