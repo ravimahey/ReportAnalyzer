@@ -33,7 +33,6 @@ uploaded_docs/
 vector_store/
 
 # Other
-README.md
 *.log
 
 uploaded_docs/

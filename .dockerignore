@@ -28,14 +28,12 @@ Thumbs.db
 # Docker
 Dockerfile
 docker-compose.yml
-.dockerignore
 
 # Project-specific - these are mounted as volumes
 uploaded_docs/
 vector_store/
 
 # Other
-README.md
 *.log
 
 
